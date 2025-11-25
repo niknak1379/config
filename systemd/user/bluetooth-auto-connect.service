@@ -1,0 +1,15 @@
+[Unit]
+Description=Auto-connect Bluetooth Device
+After=bluetooth.target suspend.target hibernate.target hybrid-sleep.target
+Requires=bluetooth.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 5
+ExecStart=/usr/bin/bt-device -c 40:EF:4C:C9:BA:5C
+RemainAfterExit=yes
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target suspend.target hibernate.target hybrid-sleep.target

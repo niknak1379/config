@@ -1,0 +1,10 @@
+[Unit]
+Description=OneDrive Monitor Resume
+After=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl --user restart onedrive-monitor.service
+
+[Install]
+WantedBy=suspend.target
